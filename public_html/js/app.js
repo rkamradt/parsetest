@@ -10,9 +10,10 @@ var parseRestKey="0dC7DQ9Yd75cNR4gWYSNYvPjyNUgHIzN4HAu4hO9";
 $(document).ready(function() {
     getMessages();
     $("#send").click(function() {
-        var username = $('input[name=username').attr('value');
-        var message = $('input[name=messsage]').attr('value');
-        console.log(username);
+		var username = $("input[name=username]").attr('value');
+		var message = $("input[name=message]").attr('value');
+		console.log(username);
+		console.log("!");
         $.ajax({url: 'https://api.parse.com/1/classes/MessagesBoard', 
             headers: {
                 'X-Parse-Application-Id': parseId,
@@ -48,7 +49,7 @@ function getMessages() {
         type: 'GET',
         success: function(data) {
             console.log('get');
-            updateView('data');
+            updateView(data);
         },
         error: function() {
             console.log('error');
@@ -58,11 +59,9 @@ function getMessages() {
 function updateView(messages) {
     var table=$('.table tbody');
     table.html('');
-    if(messages.results) {
-        $.each(messages.results, function(index, value) {
-            var trE1 = $('<tr><td>' + value.username + '</td><td>' + value.message + '</td></tr>');
-            table.append(trE1);
-        });
-    }
+    $.each(messages.results, function(index, value) {
+        var trE1 = $('<tr><td>' + value.username + '</td><td>' + value.message + '</td></tr>');
+        table.append(trE1);
+    });
     console.log(messages);
 };
