@@ -16,7 +16,7 @@ $(document).ready(function() {
         $.ajax({url: 'https://api.parse.com/1/classes/MessagesBoard', 
             headers: {
                 'X-Parse-Application-Id': parseId,
-                'X-Parse-REST-API=Key': parseRestKey
+                'X-Parse-REST-API-Key': parseRestKey
                 
             }, 
             contentType: 'application/json',
