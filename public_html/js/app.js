@@ -58,9 +58,11 @@ function getMessages() {
 function updateView(messages) {
     var table=$('.table tbody');
     table.html('');
-    $.each(messages.results, function(index, value) {
-        var trE1 = $('<tr><td>' + value.username + '</td><td>' + value.message + '</td></tr>');
-        table.append(trE1);
-    });
+    if(messages.results) {
+        $.each(messages.results, function(index, value) {
+            var trE1 = $('<tr><td>' + value.username + '</td><td>' + value.message + '</td></tr>');
+            table.append(trE1);
+        });
+    }
     console.log(messages);
 };
